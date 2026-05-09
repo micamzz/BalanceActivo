@@ -1,0 +1,141 @@
+.footer {
+  padding: 1em 4em;
+  color: #1a1a2e;
+  border-top: 1px solid rgba(89, 32, 32, 0.1); 
+  background-color: #f9fafc;
+}
+
+.footer1{
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  
+}
+
+ul li {
+  list-style: none;
+}
+
+/* Empresa */
+.brand{
+  display: flex;
+  gap: 2em;
+  align-items: center;
+}
+.brand h3 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #186CFF;
+}
+
+.brand h3 span {
+  color: #F9B6DB;
+}
+
+
+
+/* Links */
+.links{
+  display: flex;
+}
+
+.links2{
+  display: flex;
+  gap: 1em;
+}
+.links h4 {
+  color: #186CFF;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links ul li {
+  margin-bottom: 0.5rem;
+}
+
+.links ul li a {
+  color: rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.links ul li a:hover {
+  color: #186CFF;
+}
+
+/* Equipo */
+.equipo h4 {
+  text-align: center;
+  color: #186CFF;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin-bottom: 1em;
+}
+
+.equipo1 {
+  display: flex;
+  flex-direction: row;
+  gap: 0.6rem;
+  margin-bottom: 1em;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.avatar {
+  font-size: 1.8rem;
+}
+
+.cardNombre {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #186CFF;
+  margin: 0;
+}
+
+.cardRol {
+  font-size: 0.78rem;
+  margin: 0.1rem 0;
+}
+
+.cardMail {
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+
+/* Bottom */
+.bottom {
+  padding-top: 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    flex-direction: column;
+  }
+  .footer {
+    padding: 1em 1.5em;
+  }
+}

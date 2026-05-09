@@ -1,0 +1,43 @@
+.header {
+  border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+  height: 75px; 
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+   background-color: #f9fafc;
+  
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+  color: #186CFF;
+
+}
+
+.logoText {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color:#F9B6DB;
+  color: #186CFF;
+  letter-spacing: -0.5px;
+}
+
+.logoText span {
+   color:#F9B6DB;
+  font-weight: 900;
+  opacity: 1;
+}
+
+
+@media (max-width: 768px) {
+  .tagline {
+    display: none;
+  }
+  .header {
+    padding: 0 1.5rem;
+  }
+}

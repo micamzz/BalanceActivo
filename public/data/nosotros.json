@@ -1,0 +1,23 @@
+[
+  {
+    "nombre": "Micaela",
+    "apellido": "Lopez",
+    "mail": "micak@gmail.com",
+    "rol": "Fundadora",
+    "image": "/img/nosotros/mujer1.jpg" 
+  },
+  {
+    "nombre": "Carlos",
+    "apellido": "Gutierrez",
+    "mail": "carlos@gmail.com",
+    "rol": "Ventas",
+    "image": "/img/nosotros/varon1.jpg"
+  },
+  {
+    "nombre": "Sofia",
+    "apellido": "Ramos",
+    "mail": "sofia@gmail.com",
+    "rol": "Atención al cliente",
+    "image": "/img/nosotros/mujer2.jpg"
+  }
+]
