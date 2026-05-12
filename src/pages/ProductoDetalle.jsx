@@ -1,0 +1,81 @@
+import { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import styles from './ProductoDetalle.module.css';
+
+function formatPrice(price) {
+  return new Intl.NumberFormat('es-AR', {
+    style: 'currency',
+    currency: 'ARS',
+    maximumFractionDigits: 0,
+  }).format(price);
+}
+
+const ProductoDetalle = () => {
+  const { id } = useParams();
+  const [producto, setProducto] = useState(null);
+  const [cargando, setCargando] = useState(true);
+
+  useEffect(() => {
+    fetch('/data/productos.json')
+      .then(res => res.json())
+      .then(data => {
+        const encontrado = data.find(p => p.id === Number(id));
+        setProducto(encontrado || null);
+        setCargando(false);
+      })
+      .catch(() => setCargando(false));
+  }, [id]);
+
+  if (cargando) {
+    return (
+      <div className={styles.loading}>
+        <div className={styles.spinner} />
+        <p>Cargando producto...</p>
+      </div>
+    );
+  }
+
+  if (!producto) {
+    return (
+      <div className={styles.notFound}>
+        <h2>Producto no encontrado</h2>
+        <Link to="/productos" className={styles.btnVolver}>← Volver al catálogo</Link>
+      </div>
+    );
+  }
+
+  return (
+    <div className={styles.page}>
+      <div className={styles.container}>
+        <Link to="/productos" className={styles.back}>← Volver al catálogo</Link>
+
+        <div className={styles.detail}>
+          <div className={styles.imgWrap}>
+            <img
+              src={producto.imagen}
+              alt={producto.nombre}
+              className={styles.img}
+              onError={(e) => {
+                e.target.src = 'https://placehold.co/600x450/1a1a1a/FF6B00?text=Sin+imagen';
+              }}
+            />
+            <span className={styles.categoria}>{producto.categoria}</span>
+          </div>
+
+          <div className={styles.info}>
+            <h1 className={styles.nombre}>{producto.nombre}</h1>
+            <p className={styles.precio}>{formatPrice(producto.precio)}</p>
+            <p className={styles.descripcion}>{producto.descripcion}</p>
+            <p>Stock: {producto.stock} unidades</p>
+
+            <button className={styles.btnAgregar}>
+              Agregar al carrito
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProductoDetalle;

@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color:#186CFF;
+}
+
+.main {
+  flex: 1;
+}
+
+.topBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+  justify-content: space-between; 
+  background-color: #f9fafc;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .topBar {
+    flex-wrap: wrap;
+  }
+}

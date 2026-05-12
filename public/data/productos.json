@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "nombre": "Cono Tortuga x10",
+    "precio": 4500,
+    "categoria": "Conos y Señalización",
+    "descripcion": "Set de 10 conos tortuga de PVC flexible. Ideales para delimitar espacios y ejercicios de agilidad.",
+    "imagen": "/img/cono-tortuga.jpg",
+    "stock": 30
+  },
+  {
+    "id": 2,
+    "nombre": "Cono con Agujeros para Vallas",
+    "precio": 6200,
+    "categoria": "Conos y Señalización",
+    "descripcion": "Cono de PVC con orificios laterales para insertar vallas. Perfecto para circuitos de obstáculos.",
+    "imagen": "/img/cono-vallas.jpg",
+    "stock": 25
+  },
+  {
+    "id": 3,
+    "nombre": "Escalera de Coordinación",
+    "precio": 8900,
+    "categoria": "Coordinación y Agilidad",
+    "descripcion": "Escalera de agilidad de 6 metros con 12 peldaños. Material resistente con estacas de fijación incluidas.",
+    "imagen": "/img/escalera-coordinacion.jpg",
+    "stock": 15
+  },
+  {
+    "id": 4,
+    "nombre": "Aros Planos x6",
+    "precio": 5800,
+    "categoria": "Coordinación y Agilidad",
+    "descripcion": "Set de 6 aros planos de polipropileno. Diámetro 50cm. Para ejercicios de coordinación y circuitos.",
+    "imagen": "/img/aros-planos.jpg",
+    "stock": 20
+  },
+  {
+    "id": 5,
+    "nombre": "Vallas de Atletismo Ajustables x5",
+    "precio": 12500,
+    "categoria": "Atletismo",
+    "descripcion": "Set de 5 vallas regulables en altura (20 a 50cm). Estructura de PVC liviana y resistente.",
+    "imagen": "/img/vallas-atletismo.jpg",
+    "stock": 10
+  },
+  {
+    "id": 6,
+    "nombre": "Pecheras de Entrenamiento x10",
+    "precio": 7300,
+    "categoria": "Indumentaria Deportiva",
+    "descripcion": "Set de 10 pecheras de malla transpirable en colores surtidos. Talle único adaptable.",
+    "imagen": "/img/pecheras.jpg",
+    "stock": 18
+  },
+  {
+    "id": 7,
+    "nombre": "Pelota de Fútbol N°5",
+    "precio": 9800,
+    "categoria": "Fútbol",
+    "descripcion": "Pelota de fútbol tamaño 5 de cuero sintético laminado. Para uso en césped natural y sintético.",
+    "imagen": "/img/pelota-futbol.jpg",
+    "stock": 22
+  },
+  {
+    "id": 8,
+    "nombre": "Bolsa de Deporte Impermeable",
+    "precio": 6900,
+    "categoria": "Accesorios",
+    "descripcion": "Bolsa deportiva de 40 litros, material impermeable, compartimiento para calzado y bolsillo lateral.",
+    "imagen": "/img/bolsa-deporte.jpg",
+    "stock": 14
+  },
+  {
+    "id": 9,
+    "nombre": "Cronómetro Digital Deportivo",
+    "precio": 5200,
+    "categoria": "Accesorios",
+    "descripcion": "Cronómetro con memoria de 100 registros, resistente al agua, pantalla LCD grande. Ideal para entrenadores.",
+    "imagen": "/img/cronometro.jpg",
+    "stock": 12
+  },
+  {
+    "id": 10,
+    "nombre": "Silbato de Árbitro Profesional",
+    "precio": 28000,
+    "categoria": "Accesorios",
+    "descripcion": "Silbato metálico de alto decibel con cordón incluido. Usado por árbitros y entrenadores profesionales.",
+    "imagen": "/img/silbato.jpg",
+    "stock": 40
+  }
+]
