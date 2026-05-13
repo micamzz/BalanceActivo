@@ -17,7 +17,6 @@ const Footer = () => {
       <div className={styles.footer1}>
         <div className={styles.brand}>
           <h3>Balance <span>Activo</span></h3>
-          <p>Los mejores elementos deportivos</p>
         </div>
 
         {/* <div className={styles.links}>
@@ -35,12 +34,12 @@ const Footer = () => {
               <div key={persona.mail} className={styles.card}>
 
 
-                <div className={styles.avatarContainer}>
+                <div className={styles.contenedorEquipo}>
                   <img
                     src={persona.image}
                     alt={persona.nombre}
                     className={styles.avatarImg}
-                    style={{ width: '50px', height: '50px', borderRadius: '50%', objectFit: 'cover' }}
+                    style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover' }}
                   />
                 </div>
 

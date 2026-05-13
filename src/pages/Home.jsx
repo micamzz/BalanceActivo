@@ -4,8 +4,10 @@ import styles from './Home.module.css';
 const Home = () => {
   return (
     <div className={styles.hero}>
-      <div className={styles.overlay} />
-      <div className={styles.content}>
+
+    
+      <div className={styles.contenido}>
+
         <p className={styles.eyebrow}>Equipamiento deportivo profesional</p>
         <h1 className={styles.title}>
           Bienvenidos a<br />
@@ -16,13 +18,14 @@ const Home = () => {
           Conos, escaleras, vallas, pelotas y mucho más.
         </p>
         <div className={styles.actions}>
-          <Link to="/productos" className={styles.btnPrimary}>
+          <Link to="/productos" className={`${styles.botonVerProductos} ${styles.boton}`}>
             Ver Productos
           </Link>
-          <Link to="/carrito" className={styles.btnSecondary}>
+          <Link to="/carrito" className={`${styles.botonVerCarrito} ${styles.boton}`}>
             Mi Carrito
           </Link>
         </div>
+
       </div>
     </div>
   );

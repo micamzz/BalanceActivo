@@ -2,9 +2,6 @@
   padding: 0 2rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap:0.5em;
-
 }
 
 .navLinks {
@@ -18,11 +15,9 @@
   font-size: 0.9rem;
   font-weight: 700;
   padding: 0.45rem 1rem;
-  letter-spacing: 0.4px;
-  transition: all 0.2s ease;
 }
 
-.navLink:hover {
+.navLink:hover , .cartBtn:hover {
     border-bottom: 2px solid #186CFF;
    border-top: 2px solid #186CFF;
 }
@@ -32,33 +27,19 @@
 .cartBtn {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.3rem;
   text-decoration: none;
   color:#186CFF;
   font-size: 0.88rem;
   font-weight: 700;
   padding: 0.45rem 1.1rem;
-  border-radius: 8px;
 
-}
-
-.badge {
-  background: white;
-  color: #FF6B00;
-  font-size: 0.68rem;
-  font-weight: 900;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* CARRITO ICONO */
 .cartIcon {
-  width: 20px; 
-  height: 20px;
+  width: 1.2em; 
+  height: 1.2em;
 }
 
 /* Responsive */

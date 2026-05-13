@@ -39,7 +39,7 @@ const ProductoDetalle = () => {
     return (
       <div className={styles.notFound}>
         <h2>Producto no encontrado</h2>
-        <Link to="/productos" className={styles.btnVolver}>← Volver al catálogo</Link>
+        <Link to="/productos" className={styles.botonVolver}>← Volver al catálogo</Link>
       </div>
     );
   }
@@ -47,7 +47,7 @@ const ProductoDetalle = () => {
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        <Link to="/productos" className={styles.back}>← Volver al catálogo</Link>
+        <Link to="/productos" className={styles.volver}>← Volver al catálogo</Link>
 
         <div className={styles.detail}>
           <div className={styles.imgWrap}>
@@ -59,7 +59,7 @@ const ProductoDetalle = () => {
                 e.target.src = 'https://placehold.co/600x450/1a1a1a/FF6B00?text=Sin+imagen';
               }}
             />
-            <span className={styles.categoria}>{producto.categoria}</span>
+           
           </div>
 
           <div className={styles.info}>
@@ -68,7 +68,7 @@ const ProductoDetalle = () => {
             <p className={styles.descripcion}>{producto.descripcion}</p>
             <p>Stock: {producto.stock} unidades</p>
 
-            <button className={styles.btnAgregar}>
+            <button className={styles.botonAgregar}>
               Agregar al carrito
             </button>
           </div>

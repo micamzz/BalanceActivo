@@ -1,18 +1,9 @@
 .hero {
-  position: relative;
   min-height: calc(100vh - 127px);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  overflow: hidden;
-}
-
-.content {
-  position: relative;
-  z-index: 2;
-  padding: 2rem 1.5rem;
-  max-width: 680px;
 }
 
 .eyebrow {
@@ -26,10 +17,6 @@
 
 .title {
   font-size: 5em;
-}
-
-.title span {
-  color: #186CFF;
 }
 
 .subtitle {
@@ -48,21 +35,22 @@
   flex-wrap: wrap;
 }
 
-.btnPrimary {
-  background: #186CFF;
-  color: #fff;
-  text-decoration: none;
+
+/*  Estilos botones en general */
+
+.boton{
+   text-decoration: none;
   padding: 0.9rem 2.2rem;
   border-radius: 10px;
-  letter-spacing: 0.3px;
+  color: #fff;
 }
 
-.btnSecondary {
+.botonVerProductos {
+  background: #186CFF;
+}
+
+.botonVerCarrito {
   background:#FF6B00;
-  color: #fff;
-  text-decoration: none;
-  padding: 0.9rem 2.2rem;
-  border-radius: 10px;
 }
 
 /* Responsive */
@@ -83,8 +71,7 @@
   .subtitle {
     font-size: 0.9rem;
   }
-  .btnPrimary,
-  .btnSecondary {
+  .boton{
     padding: 0.75rem 1.5rem;
     font-size: 0.9rem;
     width: 100%;
