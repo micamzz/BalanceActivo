@@ -1,17 +1,22 @@
 import { useState, useEffect } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../firebase/config';
 import Item from './Item';
 import styles from './ItemListContainer.module.css';
 
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
-   const [error,setError] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('/data/productos.json')
-      .then((res) => res.json())
+    const productosRef = collection(db, "productos");
 
-      .then((data) => {
+    getDocs(productosRef)
+      .then((resp) => {
+        const data = resp.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
+        });
         setProductos(data);
         setCargando(false);
       })
