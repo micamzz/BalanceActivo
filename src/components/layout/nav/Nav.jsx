@@ -1,7 +1,10 @@
 import { NavLink, Link } from 'react-router-dom';
+import { useCart } from '../../../context/CartContext';
 import styles from './Nav.module.css';
 
 const Nav = () => {
+  const { totalItems } = useCart();
+
   return (
     <nav className={styles.nav}>
       <ul className={styles.navLinks}>
@@ -26,6 +29,16 @@ const Nav = () => {
             Productos
           </NavLink>
         </li>
+        <li>
+          <NavLink
+            to="/nuevo-producto"
+            className={({ isActive }) =>
+              isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink
+            }
+          >
+            Nuevo Producto
+          </NavLink>
+        </li>
       </ul>
 
       <Link to="/carrito" className={styles.cartBtn} aria-label="Ver carrito">
@@ -43,6 +56,9 @@ const Nav = () => {
           <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
         </svg>
         <span>Carrito</span>
+        {totalItems > 0 && (
+          <span className={styles.badge}>{totalItems}</span>
+        )}
       </Link>
     </nav>
   );
