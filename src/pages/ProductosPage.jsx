@@ -1,11 +1,10 @@
 import ItemListContainer from '../components/products/ItemListContainer';
-// import Formulario from '../components/Formulario/Formulario';
+import { FormularioContainer } from '../components/FormularioContainer/FormularioContainer';
 
 const ProductosPage = () => {
   return (
     <>
       <ItemListContainer />
-      {/* <Formulario /> */}
     </>
   );
 };

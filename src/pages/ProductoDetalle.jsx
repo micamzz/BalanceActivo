@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 import styles from './ProductoDetalle.module.css';
 
 function formatPrice(price) {
@@ -14,6 +15,7 @@ const ProductoDetalle = () => {
   const { id } = useParams();
   const [producto, setProducto] = useState(null);
   const [cargando, setCargando] = useState(true);
+  const { agregarAlCarrito, eliminarDelCarrito, getCantidadEnCarrito, getStockDisponible } = useCart();
 
   useEffect(() => {
     fetch('/data/productos.json')
@@ -25,6 +27,19 @@ const ProductoDetalle = () => {
       })
       .catch(() => setCargando(false));
   }, [id]);
+
+  const cantidad = producto ? getCantidadEnCarrito(producto.id) : 0;
+  const stockDisponible = producto ? getStockDisponible(producto) : 0;
+
+  const handleSumar = () => {
+    if (stockDisponible <= 0) return;
+    agregarAlCarrito(producto, 1);
+  };
+
+  const handleRestar = () => {
+    if (cantidad <= 0) return;
+    eliminarDelCarrito(producto.id);
+  };
 
   if (cargando) {
     return (
@@ -59,18 +74,33 @@ const ProductoDetalle = () => {
                 e.target.src = 'https://placehold.co/600x450/1a1a1a/FF6B00?text=Sin+imagen';
               }}
             />
-           
           </div>
 
           <div className={styles.info}>
             <h1 className={styles.nombre}>{producto.nombre}</h1>
             <p className={styles.precio}>{formatPrice(producto.precio)}</p>
             <p className={styles.descripcion}>{producto.descripcion}</p>
-            <p>Stock: {producto.stock} unidades</p>
+            <p className={styles.stockVal}>Stock: {stockDisponible} unidades</p>
 
-            <button className={styles.botonAgregar}>
-              Agregar al carrito
-            </button>
+            <div className={styles.selectorCantidad}>
+              <button
+                type="button"
+                className={styles.botonCantidad}
+                onClick={handleRestar}
+                disabled={cantidad === 0}
+              >
+                −
+              </button>
+              <span className={styles.cantidadValor}>{cantidad}</span>
+              <button
+                type="button"
+                className={styles.botonCantidad}
+                onClick={handleSumar}
+                disabled={stockDisponible === 0}
+              >
+                +
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -20,10 +20,26 @@ export function CartProvider({ children }) {
   };
 
   const eliminarDelCarrito = (id) => {
-    setCarrito(prev => prev.filter(item => item.id !== id));
-  };
+  setCarrito(prev => {
+    return prev.map(item =>
+      item.id === id
+        ? { ...item, cantidad: item.cantidad - 1 }
+        : item
+    ).filter(item => item.cantidad > 0);
+  });
+};
 
   const vaciarCarrito = () => setCarrito([]);
+
+  const getCantidadEnCarrito = (id) => {
+    const item = carrito.find(item => item.id === id);
+    return item ? item.cantidad : 0;
+  };
+
+  const getStockDisponible = (producto) => {
+    const cantidadEnCarrito = getCantidadEnCarrito(producto.id);
+    return producto.stock - cantidadEnCarrito;
+  };
 
   const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
 
@@ -40,6 +56,8 @@ export function CartProvider({ children }) {
       vaciarCarrito,
       totalItems,
       totalPrecio,
+      getCantidadEnCarrito,
+      getStockDisponible,
     }}>
       {children}
     </CartContext.Provider>

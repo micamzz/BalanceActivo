@@ -1,16 +1,93 @@
 .page {
   padding: 2.5rem 1.5rem 5rem;
   min-height: 70vh;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-/* Responsive */
+.page h1 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #186CFF;
+  margin-bottom: 1.5rem;
+}
 
+.lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
 
+.item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(24, 108, 255, 0.2);
+  border-radius: 12px;
+}
+
+.img {
+  width: 70px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.nombre {
+  flex: 1;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #186CFF;
+}
+
+.item span {
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.item button {
+  background: transparent;
+  border: 1px solid rgba(24, 108, 255, 0.3);
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+.total {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #FF6B00;
+  margin-bottom: 1rem;
+}
+
+.page > button {
+  background: transparent;
+  border: 1px solid rgba(24, 108, 255, 0.3);
+  border-radius: 8px;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.page a {
+  color: #186CFF;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
 
 @media (max-width: 480px) {
- 
   .page {
     padding: 1.5rem 1rem 4rem;
   }
 }
-
