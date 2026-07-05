@@ -1,0 +1,56 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 24rem;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  border: 1px solid rgba(24, 108, 255, 0.25);
+  border-radius: 14px;
+  gap: 1rem;
+  background: transparent;
+}
+
+.titulo {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #186CFF;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #186CFF;
+}
+
+.field input {
+  border: 1px solid rgba(24, 108, 255, 0.3);
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+  background: transparent;
+  color: inherit;
+  outline: none;
+}
+
+.field input:focus {
+  border-color: #186CFF;
+}
+
+.btnGuardar {
+  background-color: #F9B6DB;
+  border: none;
+  border-radius: 8px;
+  padding: 0.65rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  margin-top: 0.5rem;
+}
