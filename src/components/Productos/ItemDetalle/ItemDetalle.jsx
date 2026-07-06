@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useCart } from '../context/CartContext';
-import styles from './ProductoDetalle.module.css';
+import { query, collection, where, getDocs } from 'firebase/firestore';
+import { db } from '../../../firebase/config';
+import { useCart } from '../../../context/CartContext';
+import styles from './ItemDetalle.module.css';
 
 function formatPrice(price) {
   return new Intl.NumberFormat('es-AR', {
@@ -11,21 +13,35 @@ function formatPrice(price) {
   }).format(price);
 }
 
-const ProductoDetalle = () => {
+const ItemDetalle = () => {
   const { id } = useParams();
   const [producto, setProducto] = useState(null);
   const [cargando, setCargando] = useState(true);
   const { agregarAlCarrito, eliminarDelCarrito, getCantidadEnCarrito, getStockDisponible } = useCart();
 
   useEffect(() => {
-    fetch('/data/productos.json')
-      .then(res => res.json())
-      .then(data => {
-        const encontrado = data.find(p => p.id === Number(id));
-        setProducto(encontrado || null);
+    if (!id) return;
+    setCargando(true);
+
+    const queryId = query(
+      collection(db, "productos"),
+      where("id", "==", Number(id))
+    );
+
+    getDocs(queryId)
+      .then((resp) => {
+        if (resp.empty) {
+          setProducto(null);
+        } else {
+          const docSnap = resp.docs[0];
+          setProducto({ ...docSnap.data(), docId: docSnap.id });
+        }
         setCargando(false);
       })
-      .catch(() => setCargando(false));
+      .catch((error) => {
+        console.error("Error al cargar el producto:", error);
+        setCargando(false);
+      });
   }, [id]);
 
   const cantidad = producto ? getCantidadEnCarrito(producto.id) : 0;
@@ -108,4 +124,4 @@ const ProductoDetalle = () => {
   );
 };
 
-export default ProductoDetalle;
+export default ItemDetalle;

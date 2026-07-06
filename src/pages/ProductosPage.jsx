@@ -1,4 +1,4 @@
-import ItemListContainer from '../components/products/ItemListContainer';
+import ItemListContainer from '../components/Productos/ItemListContainer/ItemListContainer.jsx';
 import { FormularioContainer } from '../components/FormularioContainer/FormularioContainer';
 
 const ProductosPage = () => {

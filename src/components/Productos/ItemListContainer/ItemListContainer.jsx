@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../../firebase/config';
-import Item from './Item';
+import { db } from '../../../firebase/config';
+import { ItemList } from '../ItemList/ItemList.jsx';
 import styles from './ItemListContainer.module.css';
 
 const ItemListContainer = () => {
@@ -15,7 +15,7 @@ const ItemListContainer = () => {
     getDocs(productosRef)
       .then((resp) => {
         const data = resp.docs.map((doc) => {
-          return { ...doc.data(), id: doc.id };
+          return { ...doc.data(), docId: doc.id };
         });
         setProductos(data);
         setCargando(false);
@@ -41,11 +41,7 @@ const ItemListContainer = () => {
   return (
     <section className={styles.section}>
       <h2 className={styles.titulo}>Nuestros Productos</h2>
-      <div className={styles.grid}>
-        {productos.map((product) => (
-          <Item key={product.id} product={product} />
-        ))}
-      </div>
+      <ItemList productos={productos} />
     </section>
   );
 };
