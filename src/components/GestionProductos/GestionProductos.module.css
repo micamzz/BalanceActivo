@@ -67,6 +67,24 @@
   font-size: 0.92rem;
 }
 
+.btnEditar {
+  background: transparent;
+  border: 1.5px solid rgba(24, 108, 255, 0.4);
+  color: #186CFF;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.btnEditar:hover {
+  background: rgba(24, 108, 255, 0.1);
+  transform: translateY(-1px);
+}
+
 .btnEliminar {
   background: transparent;
   border: 1.5px solid rgba(226, 55, 68, 0.4);
