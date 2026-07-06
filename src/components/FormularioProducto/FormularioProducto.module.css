@@ -1,14 +1,13 @@
 .form {
   display: flex;
   flex-direction: column;
-  max-width: 26rem;
+  max-width: 30rem;
   margin: 3rem auto;
   padding: 2rem 1.75rem;
   border: 1px solid rgba(24, 108, 255, 0.25);
   border-radius: 16px;
   gap: 1.15rem;
   background: linear-gradient(180deg, rgba(24, 108, 255, 0.05), transparent 40%);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
 }
 
 .titulo {

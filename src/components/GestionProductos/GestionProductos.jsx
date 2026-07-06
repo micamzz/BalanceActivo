@@ -1,8 +1,7 @@
 // src/componentes/Gestion/Gestion.jsx
 import React, { useState, useEffect } from 'react';
 import { db } from '../../firebase/config';
-import { FormularioContainer } from
-    '../FormularioContainer/FormularioContainer';
+import  FormularioContainer from '../FormularioContainer/FormularioContainer';
 import { collection, getDocs } from "firebase/firestore";
 
 const Gestion = () => {

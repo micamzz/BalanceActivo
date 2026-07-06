@@ -32,12 +32,12 @@ const Nav = () => {
         </li>
         <li>
           <NavLink
-            to="/nuevo-producto"
+            to="/gestion"
             className={({ isActive }) =>
               isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink
             }
           >
-            Nuevo Producto
+            Gestión Productos
           </NavLink>
         </li>
       </ul>
