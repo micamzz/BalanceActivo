@@ -1,0 +1,104 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 20, 30, 0.45);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1.5rem;
+  animation: fadeIn 0.12s ease-out;
+}
+
+.modal {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(24, 108, 255, 0.15);
+  border-radius: 16px;
+  padding: 2.25rem 2rem;
+  max-width: 22rem;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+  animation: popIn 0.15s ease-out;
+}
+
+.icono {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: rgba(24, 108, 255, 0.12);
+  color: #186CFF;
+  font-size: 1.6rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.titulo {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #186CFF;
+  margin: 0 0 0.5rem;
+}
+
+.texto {
+  font-size: 0.9rem;
+  color: #444;
+  margin: 0 0 1.75rem;
+  line-height: 1.4;
+}
+
+.acciones {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btnSecundario,
+.btnPrimario {
+  flex: 1;
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.btnSecundario {
+  background: transparent;
+  border: 1.5px solid rgba(24, 108, 255, 0.35);
+  color: #186CFF;
+}
+
+.btnPrimario {
+  background: #F9B6DB;
+  color: #1a1a2e;
+}
+
+.btnSecundario:hover,
+.btnPrimario:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  from { transform: scale(0.94); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 400px) {
+  .acciones {
+    flex-direction: column;
+  }
+}
