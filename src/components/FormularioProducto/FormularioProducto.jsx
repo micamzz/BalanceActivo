@@ -1,10 +1,21 @@
 import React from 'react';
 import styles from './FormularioProducto.module.css';
 
-export function FormularioProducto({ datosForm, manejarCambio, manejarEnvio, manejarCambioImagen, enviando = false }) {
+export function FormularioProducto({
+  datosForm,
+  manejarCambio,
+  manejarEnvio,
+  manejarCambioImagen,
+  enviando = false,
+  modoEdicion = false,
+  onCancelarEdicion,
+  keyInputFile,
+}) {
   return (
     <form className={styles.form} onSubmit={manejarEnvio}>
-      <h3 className={styles.titulo}>Agregar Nuevo Producto</h3>
+      <h3 className={styles.titulo}>
+        {modoEdicion ? 'Editar Producto' : 'Agregar Nuevo Producto'}
+      </h3>
       <div className={styles.fila}>
         <div className={styles.field}>
           <label>ID:</label>
@@ -67,15 +78,32 @@ export function FormularioProducto({ datosForm, manejarCambio, manejarEnvio, man
         />
       </div>
       <div className={styles.field}>
-        <label>Imagen:</label>
+        <label>Imagen{modoEdicion ? ' (opcional)' : ''}:</label>
         <input
+          key={keyInputFile}
           type="file"
           onChange={manejarCambioImagen}
         />
       </div>
-      <button type="submit" className={styles.btnGuardar} disabled={enviando}>
-        {enviando ? 'Guardando...' : 'Guardar Producto'}
-      </button>
+      <div className={styles.acciones}>
+        <button type="submit" className={styles.btnGuardar} disabled={enviando}>
+          {enviando
+            ? 'Procesando...'
+            : modoEdicion
+              ? 'Actualizar Producto'
+              : 'Guardar Producto'}
+        </button>
+        {modoEdicion && (
+          <button
+            type="button"
+            className={styles.btnCancelar}
+            onClick={onCancelarEdicion}
+            disabled={enviando}
+          >
+            Cancelar edición
+          </button>
+        )}
+      </div>
     </form>
   );
 }
