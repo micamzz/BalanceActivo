@@ -1,0 +1,100 @@
+.page {
+  min-height: 80vh;
+  padding: 3rem 1.5rem 5rem;
+}
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.titulo {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #186CFF;
+  text-align: center;
+  margin: 0 0 2rem;
+}
+
+.formCard {
+  margin-bottom: 2.5rem;
+}
+
+.listaCard {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(24, 108, 255, 0.12);
+  border-radius: 16px;
+  padding: 1.75rem;
+}
+
+.subtitulo {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #186CFF;
+  margin: 0 0 1.1rem;
+}
+
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.9rem;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(24, 108, 255, 0.1);
+  border-radius: 10px;
+}
+
+.nombre {
+  flex: 1;
+  font-weight: 700;
+  color: #1a1a2e;
+  font-size: 0.92rem;
+}
+
+.precio {
+  font-weight: 800;
+  color: #FF6B00;
+  font-size: 0.92rem;
+}
+
+.btnEliminar {
+  background: transparent;
+  border: 1.5px solid rgba(226, 55, 68, 0.4);
+  color: #E23744;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.btnEliminar:hover {
+  background: rgba(226, 55, 68, 0.1);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+  .titulo {
+    font-size: 1.5rem;
+  }
+
+  .item {
+    flex-wrap: wrap;
+  }
+
+  .btnEliminar {
+    margin-left: auto;
+  }
+}
