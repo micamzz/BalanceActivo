@@ -1,0 +1,92 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 20, 30, 0.45);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1.5rem;
+  animation: fadeIn 0.12s ease-out;
+}
+
+.modal {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 55, 68, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 20rem;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+  animation: popIn 0.15s ease-out;
+}
+
+.icono {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: rgba(226, 55, 68, 0.12);
+  color: #E23744;
+  font-size: 1.4rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.texto {
+  font-size: 0.92rem;
+  color: #333;
+  font-weight: 600;
+  margin: 0 0 1.5rem;
+  line-height: 1.4;
+}
+
+.acciones {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btnCancelar,
+.btnEliminar {
+  flex: 1;
+  border: none;
+  border-radius: 10px;
+  padding: 0.65rem 1rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.btnCancelar {
+  background: transparent;
+  border: 1.5px solid rgba(24, 108, 255, 0.35);
+  color: #186CFF;
+}
+
+.btnEliminar {
+  background: #E23744;
+  color: #fff;
+}
+
+.btnCancelar:hover,
+.btnEliminar:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  from { transform: scale(0.94); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
