@@ -1,5 +1,9 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
+import { ModalConfirmacion } from '../components/Modal/ModalConfirmacion';
+import { ModalPagarInvitado } from '../components/Modal/ModalPagarInvitado';
 import styles from './CarritoPage.module.css';
 
 function formatPrice(price) {
@@ -12,6 +16,30 @@ function formatPrice(price) {
 
 const CarritoPage = () => {
   const { carrito, eliminarDelCarrito, vaciarCarrito, totalPrecio } = useCart();
+  const { user } = useAuth();
+  const [mostrarModalPago, setMostrarModalPago] = useState(false);
+  const [mostrarFormInvitado, setMostrarFormInvitado] = useState(false);
+
+  const finalizarCompra = () => {
+    vaciarCarrito();
+    setMostrarModalPago(true);
+  };
+
+  const handleFinalizarCompra = () => {
+    if (user) {
+      // Usuario logueado: mostramos el popup de una, sin pedir nada más.
+      finalizarCompra();
+    } else {
+      // Invitado: primero pedimos el email.
+      setMostrarFormInvitado(true);
+    }
+  };
+
+  const handleConfirmarInvitado = (email) => {
+    console.log('Compra como invitado, email:', email);
+    setMostrarFormInvitado(false);
+    finalizarCompra();
+  };
 
   if (carrito.length === 0) {
     return (
@@ -19,6 +47,13 @@ const CarritoPage = () => {
         <h1>Carrito</h1>
         <p>Tu carrito está vacío.</p>
         <Link to="/productos">Ver productos</Link>
+
+        {mostrarModalPago && (
+          <ModalConfirmacion
+            mensaje="¡Pago exitoso! Gracias por tu compra."
+            onAceptar={() => setMostrarModalPago(false)}
+          />
+        )}
       </div>
     );
   }
@@ -41,7 +76,27 @@ const CarritoPage = () => {
       </ul>
 
       <p className={styles.total}>Total: {formatPrice(totalPrecio)}</p>
-      <button onClick={vaciarCarrito}>Vaciar carrito</button>
+
+      <div className={styles.acciones}>
+        <button onClick={vaciarCarrito} className={styles.btnVaciar}>Vaciar carrito</button>
+        <button onClick={handleFinalizarCompra} className={styles.btnFinalizar}>
+          Finalizar compra
+        </button>
+      </div>
+
+      {mostrarFormInvitado && (
+        <ModalPagarInvitado
+          onCancelar={() => setMostrarFormInvitado(false)}
+          onConfirmar={handleConfirmarInvitado}
+        />
+      )}
+
+      {mostrarModalPago && (
+        <ModalConfirmacion
+          mensaje="¡Pago exitoso! Gracias por tu compra."
+          onAceptar={() => setMostrarModalPago(false)}
+        />
+      )}
     </div>
   );
 };
