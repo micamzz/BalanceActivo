@@ -42,6 +42,23 @@
   height: 1.2em;
 }
 
+/* LOGOUT */
+.btnLogout {
+  background: transparent;
+  border: none;
+  color: #186CFF;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btnLogout:hover {
+  border-bottom: 2px solid #186CFF;
+  border-top: 2px solid transparent;
+}
+
 /* Responsive */
 @media (max-width: 480px) {
   .nav {

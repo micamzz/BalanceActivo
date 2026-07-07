@@ -1,9 +1,11 @@
 import { NavLink, Link } from 'react-router-dom';
 import { useCart } from '../../../context/CartContext';
+import { useAuth } from '../../../context/AuthContext';
 import styles from './Nav.module.css';
 
 const Nav = () => {
   const { totalItems } = useCart();
+  const { user, logout } = useAuth();
 
   return (
     <nav className={styles.nav}>
@@ -19,7 +21,7 @@ const Nav = () => {
             Inicio
           </NavLink>
         </li>
-        
+
         <li>
           <NavLink
             to="/productos"
@@ -30,16 +32,41 @@ const Nav = () => {
             Productos
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to="/gestion"
-            className={({ isActive }) =>
-              isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink
-            }
-          >
-            Gestión Productos
-          </NavLink>
-        </li>
+
+        {user && user.rol === 'admin' && (
+          <li>
+            <NavLink
+              to="/gestion"
+              className={({ isActive }) =>
+                isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink
+              }
+            >
+              Gestión
+            </NavLink>
+          </li>
+        )}
+
+        {user ? (
+          <>
+            <li className={styles.navLink}>¡Hola, {user.email}!</li>
+            <li>
+              <button onClick={logout} className={styles.btnLogout}>
+                Cerrar Sesión
+              </button>
+            </li>
+          </>
+        ) : (
+          <li>
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink
+              }
+            >
+              Login
+            </NavLink>
+          </li>
+        )}
       </ul>
 
       <Link to="/carrito" className={styles.cartBtn} aria-label="Ver carrito">
