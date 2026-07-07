@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import styles from './Home.module.css';
 
 const Home = () => {
+  const { user } = useAuth();
+
   return (
     <div className={styles.hero}>
 
@@ -9,6 +12,9 @@ const Home = () => {
       <div className={styles.contenido}>
 
         <p className={styles.eyebrow}>Equipamiento deportivo profesional</p>
+        {user && (
+          <p className={styles.saludo}>¡Hola, {user.email}!</p>
+        )}
         <h1 className={styles.title}>
           Bienvenidos a<br />
           <span>Balance</span> Activo
