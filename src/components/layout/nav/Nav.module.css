@@ -7,19 +7,36 @@
 .navLinks {
   list-style: none;
   display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .navLink {
+  display: flex;
+  align-items: center;
   color:#186CFF;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 700;
   padding: 0.45rem 1rem;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  box-sizing: border-box;
 }
 
 .navLink:hover , .cartBtn:hover {
     border-bottom: 2px solid #186CFF;
    border-top: 2px solid #186CFF;
+}
+
+.navLinkNaranja {
+  color: #FF6B00 !important;
+}
+
+.navLinkNaranja:hover {
+  border-bottom: 2px solid #FF6B00 !important;
+  border-top: 2px solid #FF6B00 !important;
 }
 
 
@@ -33,6 +50,9 @@
   font-size: 0.88rem;
   font-weight: 700;
   padding: 0.45rem 1.1rem;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  box-sizing: border-box;
 
 }
 
@@ -44,19 +64,25 @@
 
 /* LOGOUT */
 .btnLogout {
+  display: flex;
+  align-items: center;
   background: transparent;
   border: none;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  box-sizing: border-box;
   color: #186CFF;
   font-size: 0.9rem;
   font-weight: 700;
   padding: 0.45rem 1rem;
   cursor: pointer;
   font-family: inherit;
+  line-height: normal;
 }
 
 .btnLogout:hover {
   border-bottom: 2px solid #186CFF;
-  border-top: 2px solid transparent;
+  border-top: 2px solid #186CFF;
 }
 
 /* Responsive */
@@ -77,8 +103,8 @@
 
 
 .badge {
-  background: #FF6B00;
-  color: #fff;
+  background:  #F9B6DB;
+  color: #000000;
   font-size: 0.65rem;
   font-weight: 900;
   min-width: 18px;
