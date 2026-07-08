@@ -34,7 +34,7 @@ La aplicación permite a cualquier visitante navegar el catálogo, ver el detall
 Para probar el panel de gestión (productos y cupones), iniciá sesión con la cuenta de administrador:
 
 - **Usuario:** `admin@gmail.com`
-- **Contraseña:** *(solicitar al autor del proyecto)*
+- **Contraseña:** `admin1234`
 
 Con esta cuenta vas a ver las secciones "Gestión" y "Cupones" en el menú, que no aparecen para un usuario común. Cualquier otra cuenta que te registres desde "Registrarse" queda con permisos de usuario estándar (solo compra).
 
