@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom'
 import { Layout } from './components/layout/Layout.jsx'
-import Home from './pages/Home.jsx'
+import Home from './components/Home/Home.jsx'
 import ProductosPage from './pages/ProductosPage.jsx'
 import ItemDetalle from './components/Productos/ItemDetalle/ItemDetalle.jsx'
-import CarritoPage from './pages/CarritoPage.jsx'
+import CarritoPage from './components/Carrito/CarritoPage.jsx'
 import { CartProvider } from './context/CartContext.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
 import Gestion from './components/GestionProductos/GestionProductos.jsx'
@@ -12,6 +12,7 @@ import Login from './components/Login/Login.jsx'
 import Registro from './components/Registro/Registro.jsx'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute.jsx'
 import NoAutorizado from './components/NoAutorizado/NoAutorizado.jsx'
+
 
 function App() {
   return (

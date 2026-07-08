@@ -3,6 +3,7 @@
   min-height: 70vh;
   max-width: 800px;
   margin: 0 auto;
+  overflow-x: hidden;
 }
 
 .page h1 {
@@ -40,6 +41,7 @@
 
 .nombre {
   flex: 1;
+  min-width: 0;
   font-size: 0.9rem;
   font-weight: 700;
   color: #186CFF;
@@ -193,5 +195,32 @@
 @media (max-width: 480px) {
   .page {
     padding: 1.5rem 1rem 4rem;
+  }
+
+  .item {
+    flex-wrap: wrap;
+  }
+
+  .nombre {
+    flex-basis: 100%;
+    order: -1;
+  }
+
+  .cuponInputRow {
+    flex-direction: column;
+  }
+
+  .acciones {
+    flex-direction: column-reverse;
+  }
+
+  .btnVaciar,
+  .btnFinalizar {
+    width: 100%;
+    text-align: center;
+  }
+
+  .cuponAplicado {
+    flex-wrap: wrap;
   }
 }

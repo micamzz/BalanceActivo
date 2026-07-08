@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import { db } from '../firebase/config';
-import { useCart } from '../context/CartContext';
-import { useAuth } from '../context/AuthContext';
-import { ModalConfirmacion } from '../components/Modal/ModalConfirmacion';
-import { ModalPagarInvitado } from '../components/Modal/ModalPagarInvitado';
+import { db } from '../../firebase/config';
+import { useCart } from '../../context/CartContext';
+import { useAuth } from '../../context/AuthContext';
+import { ModalConfirmacion } from '../Modal/ModalConfirmacion';
+import { ModalPagarInvitado } from '../Modal/ModalPagarInvitado';
 import styles from './CarritoPage.module.css';
 
 function formatPrice(price) {
