@@ -136,6 +136,11 @@
   margin: 1rem 0;
 }
 
+.tablaWrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .tabla {
   width: 100%;
   border-collapse: collapse;
@@ -206,5 +211,6 @@
 
   .tabla {
     font-size: 0.75rem;
+    min-width: 480px;
   }
 }

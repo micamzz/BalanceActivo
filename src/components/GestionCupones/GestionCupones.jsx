@@ -206,41 +206,43 @@ function GestionCupones() {
           <h3 className={styles.subtitulo}>Listado de Cupones</h3>
 
           {cupones.length ? (
-            <table className={styles.tabla}>
-              <thead>
-                <tr>
-                  <th>Código</th>
-                  <th>Desde</th>
-                  <th>Hasta</th>
-                  <th>Descuento</th>
-                  <th>Acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                {cupones.map((cupon) => (
-                  <tr key={cupon.id}>
-                    <td>{cupon.codigo}</td>
-                    <td>{cupon.fechaInicio}</td>
-                    <td>{cupon.fechaFin}</td>
-                    <td>{cupon.descuento}%</td>
-                    <td className={styles.tdAcciones}>
-                      <button
-                        onClick={() => manejarEditar(cupon)}
-                        className={styles.btnEditar}
-                      >
-                        Editar
-                      </button>
-                      <button
-                        onClick={() => manejarEliminarClick(cupon)}
-                        className={styles.btnEliminarTabla}
-                      >
-                        Eliminar
-                      </button>
-                    </td>
+            <div className={styles.tablaWrapper}>
+              <table className={styles.tabla}>
+                <thead>
+                  <tr>
+                    <th>Código</th>
+                    <th>Desde</th>
+                    <th>Hasta</th>
+                    <th>Descuento</th>
+                    <th>Acciones</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {cupones.map((cupon) => (
+                    <tr key={cupon.id}>
+                      <td>{cupon.codigo}</td>
+                      <td>{cupon.fechaInicio}</td>
+                      <td>{cupon.fechaFin}</td>
+                      <td>{cupon.descuento}%</td>
+                      <td className={styles.tdAcciones}>
+                        <button
+                          onClick={() => manejarEditar(cupon)}
+                          className={styles.btnEditar}
+                        >
+                          Editar
+                        </button>
+                        <button
+                          onClick={() => manejarEliminarClick(cupon)}
+                          className={styles.btnEliminarTabla}
+                        >
+                          Eliminar
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           ) : (
             <p className={styles.vacio}>No hay cupones activos todavía.</p>
           )}
