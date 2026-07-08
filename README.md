@@ -1,5 +1,7 @@
 #   Balance Activo - Curso React - Talento Tech
 
+ **Sitio desplegado:** https://balanceactivo.netlify.app/
+
 Balance Activo es una tienda online de artículos deportivos, desarrollada como proyecto final del curso de **React** de **Talento Tech**.
 
 La aplicación permite a cualquier visitante navegar el catálogo, ver el detalle de cada producto, agregarlo al carrito y simular una compra (como usuario registrado o como invitado). Además, cuenta con un panel de administración privado donde el rol `admin` puede gestionar el catálogo de productos y los cupones de descuento.
