@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { db } from '../firebase/config';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { ModalConfirmacion } from '../components/Modal/ModalConfirmacion';
@@ -14,14 +16,77 @@ function formatPrice(price) {
   }).format(price);
 }
 
+// Formato YYYY-MM-DD, comparable como string tal como lo guarda el <input type="date">
+function hoyComoFecha() {
+  const hoy = new Date();
+  const anio = hoy.getFullYear();
+  const mes = String(hoy.getMonth() + 1).padStart(2, '0');
+  const dia = String(hoy.getDate()).padStart(2, '0');
+  return `${anio}-${mes}-${dia}`;
+}
+
 const CarritoPage = () => {
   const { carrito, eliminarDelCarrito, vaciarCarrito, totalPrecio } = useCart();
   const { user } = useAuth();
   const [mostrarModalPago, setMostrarModalPago] = useState(false);
   const [mostrarFormInvitado, setMostrarFormInvitado] = useState(false);
 
+  const [codigoCupon, setCodigoCupon] = useState('');
+  const [cuponAplicado, setCuponAplicado] = useState(null);
+  const [errorCupon, setErrorCupon] = useState('');
+  const [verificandoCupon, setVerificandoCupon] = useState(false);
+
+  const totalConDescuento = cuponAplicado
+    ? totalPrecio - (totalPrecio * cuponAplicado.descuento) / 100
+    : totalPrecio;
+
+  const aplicarCupon = async () => {
+    setErrorCupon('');
+
+    if (!codigoCupon.trim()) {
+      setErrorCupon('Ingresá un código de cupón.');
+      return;
+    }
+
+    setVerificandoCupon(true);
+    try {
+      const cuponesRef = collection(db, "coupons");
+      const q = query(cuponesRef, where("codigo", "==", codigoCupon.trim().toUpperCase()));
+      const resp = await getDocs(q);
+
+      if (resp.empty) {
+        setErrorCupon('El cupón no existe.');
+        setCuponAplicado(null);
+        return;
+      }
+
+      const cupon = resp.docs[0].data();
+      const hoy = hoyComoFecha();
+
+      if (hoy < cupon.fechaInicio || hoy > cupon.fechaFin) {
+        setErrorCupon('El cupón no está vigente.');
+        setCuponAplicado(null);
+        return;
+      }
+
+      setCuponAplicado(cupon);
+    } catch (error) {
+      console.error('Error al validar el cupón:', error);
+      setErrorCupon('Ocurrió un error al validar el cupón.');
+    } finally {
+      setVerificandoCupon(false);
+    }
+  };
+
+  const quitarCupon = () => {
+    setCuponAplicado(null);
+    setCodigoCupon('');
+    setErrorCupon('');
+  };
+
   const finalizarCompra = () => {
     vaciarCarrito();
+    quitarCupon();
     setMostrarModalPago(true);
   };
 
@@ -75,7 +140,37 @@ const CarritoPage = () => {
         ))}
       </ul>
 
-      <p className={styles.total}>Total: {formatPrice(totalPrecio)}</p>
+      <div className={styles.cuponBox}>
+        {cuponAplicado ? (
+          <p className={styles.cuponAplicado}>
+            Cupón <strong>{cuponAplicado.codigo}</strong> aplicado (-{cuponAplicado.descuento}%)
+            <button onClick={quitarCupon} className={styles.btnQuitarCupon}>Quitar</button>
+          </p>
+        ) : (
+          <div className={styles.cuponInputRow}>
+            <input
+              type="text"
+              placeholder="Código de cupón"
+              value={codigoCupon}
+              onChange={(e) => setCodigoCupon(e.target.value)}
+              className={styles.cuponInput}
+            />
+            <button onClick={aplicarCupon} disabled={verificandoCupon} className={styles.btnAplicarCupon}>
+              {verificandoCupon ? 'Verificando...' : 'Aplicar'}
+            </button>
+          </div>
+        )}
+        {errorCupon && <p className={styles.errorCupon}>{errorCupon}</p>}
+      </div>
+
+      {cuponAplicado ? (
+        <>
+          <p className={styles.totalTachado}>Subtotal: {formatPrice(totalPrecio)}</p>
+          <p className={styles.total}>Total con descuento: {formatPrice(totalConDescuento)}</p>
+        </>
+      ) : (
+        <p className={styles.total}>Total: {formatPrice(totalPrecio)}</p>
+      )}
 
       <div className={styles.acciones}>
         <button onClick={vaciarCarrito} className={styles.btnVaciar}>Vaciar carrito</button>
