@@ -1,9 +1,38 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
+import { useAuth } from './AuthContext';
 
 const CartContext = createContext();
 
+function getClaveCarrito(uid) {
+  return `carrito_${uid || 'invitado'}`;
+}
+
+function cargarCarritoGuardado(uid) {
+  try {
+    const guardado = localStorage.getItem(getClaveCarrito(uid));
+    return guardado ? JSON.parse(guardado) : [];
+  } catch (error) {
+    console.error('Error al leer el carrito guardado:', error);
+    return [];
+  }
+}
+
 export function CartProvider({ children }) {
-  const [carrito, setCarrito] = useState([]);
+  const { user } = useAuth();
+  const uid = user ? user.uid : null;
+
+  const [carrito, setCarrito] = useState(() => cargarCarritoGuardado(uid));
+
+  // Cada vez que cambia el usuario (login, logout, o cambio de cuenta),
+  // cargamos el carrito guardado de ESE usuario en particular.
+  useEffect(() => {
+    setCarrito(cargarCarritoGuardado(uid));
+  }, [uid]);
+
+  // Cada vez que el carrito cambia, lo guardamos bajo la clave del usuario actual.
+  useEffect(() => {
+    localStorage.setItem(getClaveCarrito(uid), JSON.stringify(carrito));
+  }, [carrito, uid]);
 
   const agregarAlCarrito = (producto, cantidad = 1) => {
     setCarrito(prev => {
