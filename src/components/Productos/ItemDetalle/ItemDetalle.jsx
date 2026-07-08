@@ -70,7 +70,7 @@ const ItemDetalle = () => {
     return (
       <div className={styles.notFound}>
         <h2>Producto no encontrado</h2>
-        <Link to="/productos" className={styles.botonVolver}>← Volver al catálogo</Link>
+        <Link to="/productos" className={styles.botonVolver}> Volver al catálogo</Link>
       </div>
     );
   }
@@ -78,7 +78,7 @@ const ItemDetalle = () => {
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        <Link to="/productos" className={styles.volver}>← Volver al catálogo</Link>
+        <Link to="/productos" className={styles.volver}> Volver al catálogo</Link>
 
         <div className={styles.detail}>
           <div className={styles.imgWrap}>

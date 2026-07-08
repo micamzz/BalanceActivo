@@ -9,7 +9,8 @@
 }
 
 .volver {
-  display: inline-block;
+  display: block;
+  text-align: right;
   color: #186CFF;
   text-decoration: none;
   font-size: 0.9rem;
