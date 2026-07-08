@@ -2,6 +2,8 @@
   padding: 0 2rem;
   display: flex;
   align-items: center;
+  position: relative;
+  align-self: stretch;
 }
 
 .navLinks {
@@ -85,23 +87,6 @@
   border-top: 2px solid #186CFF;
 }
 
-/* Responsive */
-@media (max-width: 480px) {
-  .nav {
-    padding: 0 0.5rem;
-    gap: 0.2rem;
-  }
-  .navLink {
-    font-size: 0.78rem;
-    padding: 0.4rem 0.6rem;
-  }
-  .cartBtn {
-    font-size: 0.78rem;
-    padding: 0.4rem 0.6rem;
-  }
-}
-
-
 .badge {
   background:  #F9B6DB;
   color: #000000;
@@ -114,4 +99,104 @@
   align-items: center;
   justify-content: center;
   padding: 0 3px;
+}
+
+/* BOTÓN HAMBURGUESA (oculto en desktop) */
+.btnHamburguesa {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 34px;
+  height: 34px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: auto;
+}
+
+.barra {
+  display: block;
+  width: 100%;
+  height: 2.5px;
+  background: #186CFF;
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.barra1Abierta {
+  transform: translateY(7.5px) rotate(45deg);
+}
+
+.barra2Abierta {
+  opacity: 0;
+}
+
+.barra3Abierta {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* Responsive: navbar chico -> hamburguesa */
+@media (max-width: 860px) {
+  .nav {
+    padding: 0 1rem;
+    justify-content: space-between;
+    flex: 1;
+    width: 100%;
+  }
+
+  .btnHamburguesa {
+    display: flex;
+  }
+
+  .navLinks {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background: #f9fafc;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    padding: 0.5rem 0;
+    z-index: 50;
+  }
+
+  .navLinksAbierto {
+    display: flex;
+  }
+
+  .navLink,
+  .cartBtn,
+  .btnLogout {
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+    border-top: none;
+    border-bottom: none;
+    justify-content: flex-start;
+    font-size: 1rem;
+  }
+
+  .navLink:hover,
+  .cartBtn:hover,
+  .btnLogout:hover {
+    background: rgba(24, 108, 255, 0.06);
+    border-top: none;
+    border-bottom: none;
+  }
+
+  .navLinkNaranja:hover {
+    background: rgba(255, 107, 0, 0.08);
+    border-top: none;
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    padding: 0 0.75rem;
+  }
 }

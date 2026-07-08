@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { useCart } from '../../../context/CartContext';
 import { useAuth } from '../../../context/AuthContext';
@@ -6,14 +7,29 @@ import styles from './Nav.module.css';
 const Nav = () => {
   const { totalItems } = useCart();
   const { user, logout } = useAuth();
+  const [menuAbierto, setMenuAbierto] = useState(false);
+
+  const cerrarMenu = () => setMenuAbierto(false);
 
   return (
     <nav className={styles.nav}>
-      <ul className={styles.navLinks}>
+      <button
+        className={styles.btnHamburguesa}
+        onClick={() => setMenuAbierto(prev => !prev)}
+        aria-label={menuAbierto ? 'Cerrar menú' : 'Abrir menú'}
+        aria-expanded={menuAbierto}
+      >
+        <span className={menuAbierto ? `${styles.barra} ${styles.barra1Abierta}` : styles.barra}></span>
+        <span className={menuAbierto ? `${styles.barra} ${styles.barra2Abierta}` : styles.barra}></span>
+        <span className={menuAbierto ? `${styles.barra} ${styles.barra3Abierta}` : styles.barra}></span>
+      </button>
+
+      <ul className={menuAbierto ? `${styles.navLinks} ${styles.navLinksAbierto}` : styles.navLinks}>
         <li>
           <NavLink
             to="/"
             end
+            onClick={cerrarMenu}
             className={({ isActive }) =>
               isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink
             }
@@ -25,6 +41,7 @@ const Nav = () => {
         <li>
           <NavLink
             to="/productos"
+            onClick={cerrarMenu}
             className={({ isActive }) =>
               isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink
             }
@@ -37,6 +54,7 @@ const Nav = () => {
           <li>
             <NavLink
               to="/gestion"
+              onClick={cerrarMenu}
               className={({ isActive }) =>
                 isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink
               }
@@ -50,6 +68,7 @@ const Nav = () => {
           <li>
             <NavLink
               to="/cupones"
+              onClick={cerrarMenu}
               className={({ isActive }) =>
                 isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink
               }
@@ -61,7 +80,7 @@ const Nav = () => {
 
         {(!user || user.rol !== 'admin') && (
           <li>
-            <Link to="/carrito" className={styles.cartBtn} aria-label="Ver carrito">
+            <Link to="/carrito" className={styles.cartBtn} aria-label="Ver carrito" onClick={cerrarMenu}>
               <svg
                 className={styles.cartIcon}
                 xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +104,7 @@ const Nav = () => {
 
         {user ? (
           <li>
-            <button onClick={logout} className={styles.btnLogout}>
+            <button onClick={() => { logout(); cerrarMenu(); }} className={styles.btnLogout}>
               Cerrar Sesión
             </button>
           </li>
@@ -93,6 +112,7 @@ const Nav = () => {
           <li>
             <NavLink
               to="/login"
+              onClick={cerrarMenu}
               className={({ isActive }) =>
                 isActive
                   ? `${styles.navLink} ${styles.navLinkNaranja} ${styles.navLinkActive}`
