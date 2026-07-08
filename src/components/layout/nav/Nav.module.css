@@ -193,6 +193,10 @@
     border-top: none;
     border-bottom: none;
   }
+
+  .cartIcon {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
